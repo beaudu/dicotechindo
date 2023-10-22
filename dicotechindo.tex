@@ -1,0 +1,2023 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Copyright François Beauducel, 1993-2023. 
+%
+%beauducel@gmail.com
+%
+%Ce logiciel est un programme informatique servant à produire un
+%petit dictionnaire français-indonésien sous forme PDF. 
+%
+%Ce logiciel est régi par la licence CeCILL soumise au droit français et
+%respectant les principes de diffusion des logiciels libres. Vous pouvez
+%utiliser, modifier et/ou redistribuer ce programme sous les conditions
+%de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA 
+%sur le site "http://www.cecill.info".
+%
+%En contrepartie de l'accessibilité au code source et des droits de copie,
+%de modification et de redistribution accordés par cette licence, il n'est
+%offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+%seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+%titulaire des droits patrimoniaux et les concédants successifs.
+%
+%A cet égard  l'attention de l'utilisateur est attirée sur les risques
+%associés au chargement,  à l'utilisation,  à la modification et/ou au
+%développement et à la reproduction du logiciel par l'utilisateur étant 
+%donné sa spécificité de logiciel libre, qui peut le rendre complexe à 
+%manipuler et qui le réserve donc à des développeurs et des professionnels
+%avertis possédant  des  connaissances  informatiques approfondies.  Les
+%utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+%logiciel à leurs besoins dans des conditions permettant d'assurer la	
+%sécurité de leurs systèmes et ou de leurs données et, plus généralement, 
+%à l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
+%
+%Le fait que vous puissiez accéder à cet en-tête signifie que vous avez 
+%pris connaissance de la licence CeCILL, et que vous en avez accepté les
+%termes.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt,twocolumns]{article}
+\usepackage{amsxtra}
+\usepackage{geometry}
+\geometry{a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{soul}
+\usepackage{color}
+\usepackage{xspace}
+\usepackage{fontspec}   
+\setmainfont{Liberation Serif}
+
+\usepackage{totcount}
+\newtotcounter{mots}
+\newtotcounter{expr}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{}
+\author{}
+%\dtte{}
+
+\setlength{\columnsep}{1.5cm}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.2em}
+
+% formattage spécifique et comptage
+\newcommand{\de}[1]{\stepcounter{mots}\textbf{#1}} % entrée d'un mot
+\newcommand{\dd}[1]{\stepcounter{expr}\textit{#1}} % entrée d'une expression
+\newcommand{\da}[1]{\textit{#1}} % annotation/précision
+\newcommand{\dt}{\textit{\textasciitilde}} % tilda (remplace le mot d'entrée)
+
+% ============================================================================================================
+\begin{document}
+%\maketitle
+
+\begin{centering}
+{\Large François Beauducel}\\[.2cm]
+{\small BANDUNG • PARIS • YOGYAKARTA}\\[5cm]
+{\Large PETIT DICTIONNAIRE TECHNIQUE}\\[.5cm]
+{\fontsize{36}{40}\selectfont FRANÇAIS - INDONÉSIEN}\\[8cm]
+Réalisé avec le concours de Alix Aimée Triyanti,\\
+ébauché en 1993 avec la complicité de Wimpy S. Tjetjep\\[.2cm]
+© F. Beauducel, \the\year{}, licence libre CeCILL\\[1cm]
+{\Large\textbf{v1.0}}\\[.2cm]
+\total{mots} mots, \total{expr} expressions\\
+\end{centering}
+
+
+% ============================================================================================================
+\twocolumn
+\flushleft
+
+\small
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{Avant-propos}
+Au départ simple lexique de termes techniques en rapport avec la volcanologie, ce petit dictionnaire français- indonésien a été progressivement augmenté de vocabulaire lié aux autres sciences et techniques (physique, chimie, mathématiques, informatique, médecine, botanique, zoologie, ...) et à la vie quotidienne en Indonésie dans un contexte professionnel. Il est basé exclusivement sur l'usage local, oral ou écrit, observé par l'auteur au cours de ses séjours en Indonésie, vérifiés suivant plusieurs sources (natifs compétents dans le domaine, définition du \textit{Kamus Besar Bahasa Indonesia}, articles croisés Wikipédia). Son objectif est de compléter les dictionnaires généraux et autres guides de conversation.
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{Notes}
+Les mots (verbe, nom, adjectif, etc.) sont regroupés par leur racine commune, l'entrée du dictionnaire étant généralement le verbe à l'infinitif.
+
+La traduction d'un verbe est donnée d'abord par sa forme infinitive, avec le suffixe \textbf{-kan} ou \textbf{-i} pour les verbes transitifs le cas échéant, puis conjuguée avec les préfixes \textbf{me-}, \textbf{ber-} ou \textbf{di-}).
+
+L'indonésien ne possédant pas de genre grammatical, seul le masculin est noté, sauf indication complémentaire.
+
+La typographie de ce lexique est largement inspirée du dictionnaire général indonésien-français de Pierre Labrousse (Archipel Association, juillet 1992, épuisé).
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{Abréviations}
+\begin{tabular}{rl}
+\dt				&	mot d'entrée précédent (en caractères gras).\\
+\rightarrow		&	voir.\\
+\textit{adj.}	&	adjectif.\\
+\textit{anat.}	&	anatomie.\\
+\textit{bot.}	&	botanique.\\
+\textit{culin.}	&	culinaire.\\
+\textit{élec.}	&	électrique.\\
+\textit{fam.}	&	familier.\\
+\textit{fig.}	&	figuré.\\
+\textit{fin.}	&	finance.\\
+\textit{form.}	&	formel.\\
+\textit{géom.}	&	géométrie.\\
+\textit{jav.}	&	javanais.\\
+\textit{litt.}	&	littéraire.\\
+\textit{math.}	&	mathématiques.\\
+\textit{méc.}	&	mécanique.\\
+\textit{méd.}	&	médical.\\
+\textit{mét.}	&	météorologie.\\
+\textit{mus.}	&	musique.\\
+\textit{n.}		&	nom.\\
+\textit{num.}	&	numérique.\\
+\textit{pers.}	&	personne.\\
+\textit{phys.}	&	physique.\\
+\textit{pol.}	&	politique.\\
+\textit{sci.}	&	sciences.\\
+\textit{typ.}	&	typographie.\\
+\textit{v.}		&	verbe.\\
+\end{tabular}
+
+
+\newpage
+\normalsize
+\hangindent=0.5cm
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge A}
+
+\de{abandonner.} meninggalkan. \de{abandonné.} \dd{(objet)} tertinggal.
+
+\de{abattre.} \dd{(un arbre)}. tebang, menebang. \dd{(un homme, un animal)} membunuh.
+
+\de{abonner.} \dd{s'\dt} berlangganan. \de{abonnement.} langganan. \de{abonné.} \da{n.} pelanggan.
+
+\de{abréviation.} singkatan.
+
+\de{absolu.} mutlak, absolut.
+
+\de{accélérer.} percepat, mempercepat. \de{accélération.} \dd{(phys.)} percepatan, akselerasi.
+
+\de{accent.} \dd{typ.} aksen. \dd{(langue)} logat.
+
+\de{accident.} kecelakaan.
+
+\de{accolade.} \dd{(typ.)} kurung kurawal. \dd{\dt~gauche} kurung kurawal buka. \dd{\dt~droite} kurung kurawal tutup.
+
+\de{accorder.} menyetujui. \dd{(un piano)} menyetem. \de{accord.} persetujuan. \dd{être d'\dt} setuju.
+
+\de{acier.} baja, besi baja. \dd{\dt~inox} stainless steel.
+
+\de{acquérir.} mendapatkan. \dd{\dt~des données} mengumpulkan. \de{acquisition.} pengambilan. \dd{collecte de données} pengumpulan data.
+
+\de{acronyme.} singkatan.
+
+\de{activer.} mengaktifkan, menyalakan. \de{actif.} giat, aktif. \de{activité.} kegiatan.
+
+\de{additionner.} tambah, menambah. \de{addition.} \dd{(math.)} penjumlahan. \dd{(au restaurant)} bon.
+
+\de{adjoint.} wakil.
+
+\de{adulte.} \dd{n.} orang dewasa. \dd{adj.} dewasa.
+
+\de{aéroport.} bandara, \da{form.} bandar udara.
+
+\de{afficher.} tunjuk, menunjukkan. \de{affichage.} petunjuk. \dd{panneau d'\dt} papan petunjuk.
+
+\de{aigu.} \dd{(son, voix)} melengking, \dd{(angle)} lancip.
+
+\de{air.} udara. \dd{armée de l'\dt} angkatan udara.
+
+\de{aire.} \dd{(géom.)} luas.
+
+\de{alentour.} \dd{aux \dt} sekitar.
+
+\de{Algérie.} Aljazair. \de{algérien.} \da{adj.} aljazair. \da{n.} orang Aljazair.
+
+\de{algorithme.} algoritme.
+
+\de{Allemagne.} Jerman. \de{allemand.} \da{adj.} jerman. \da{n.} orang Jerman.
+
+\de{allumer.} menyalakan, \dd{(un appareil)} menghidupkan. \dd{\dt~un feu} menyalakan api. \de{allumé.} nyala, hidup. \de{allumette.} korek, korek api, \da{jav.} korek api jres.
+
+\de{alphabet.} alfabet.
+
+\de{altitude.} ketinggian.
+
+\de{amalgamant.} \dd{ruban auto \dt} scotch tiga-M.
+
+\de{Amérique.} Amerika. \de{américain.} \da{adj.} amerika. \da{n.} orang Amerika.
+
+\de{amont.} hulu.
+
+\de{ampoule.} \dd{\dt~à gaz} tabung gas. \dd{\dt~électrique} bolam, bola lampu listrik.
+
+\de{anacarde.} \dd{(noix de cajou)} kacang mete. \de{anacadier.} pohon jambu mete.
+
+\de{ananas.} nanas.
+
+\de{ancêtre.} nenek moyang. \de{ancien.} \da{n.} orang tua. \da{adj.} kuno, lama.
+
+\de{andésite.} andesit.
+
+\de{angle.} sudut. \dd{\dt~droit} sudut siku-siku, sudut tegak. \dd{\dt~aigu} sudut lancip. \dd{\dt~obtus} sudut tumpul. \dd{\dt~plat} sudut lurus.
+
+\de{Angleterre.} Inggris. \de{anglais.} \da{adj.} inggris. \da{n.} orang Inggris.
+
+\de{année.} tahun. \de{annuel.} tahunan, setiap tahun.
+
+\de{annexe.} \dd{n.} lampiran. \dd{adj.} sampingan.
+
+\de{anniversaire.} ulang tahun. \dd{bon \dt} selamat ulang tahun, panjang umurnya.
+
+\de{annuler.} batalkan, membatalkan. \de{annulé.} dibatalkan. \de{annulation.} pembatalan.
+
+\de{appareiller.} naik pesawat. \de{appareil.} alat, pesawat. \dd{\dt~génital} alat kelamin.
+
+\de{après.} \dd{(postérieur)} sesudah, setelah. \dd{\rightarrow~post}.
+
+\de{araignée.} laba-laba.
+
+\de{arbre.} pohon.
+
+\de{armer.} menyenjatai. \de{armé.} bersenjata. \de{armée.} \da{n.} tentara, militer. \dd{\dt~de terre} angkatan darat.  \dd{\dt~de l'air} angkatan udara. \de{arme}. senjata. \de{armement.} persenjataan.
+
+\de{arracher.} cabut, mencabut. \de{arraché.} dicabut, tercabut. \de{arrachage.} pencabutan. \de{arracheur.} pencabut.
+
+\de{arrêter.} menghentikan.  \dd{arrêtez !} hentikan! \dd{s'\dt} berhenti. \de{arrêté.} \dd{\dt~ministériel} peraturan menteri.
+
+\de{arrière.} \dd{(position)} belakang. \dd{à l'\dt} di belakang.
+
+\de{arroser.} siram, menyiram. \de{arrosé.} tersiram, disiram. \de{arrosoir.} gembor.
+
+\de{ascension.} pendakian, kenaikan.
+
+\de{asphalte.} aspal.
+
+\de{atelier.} bengkel. \dd{\dt~mécanique} bengkel bubut.
+
+\de{atmosphère.} atmosfer, atmosfir. \de{atmosphérique.} \dd{pression \dt} tekanan udara.
+
+\de{attacher.} gabung, menggabung, pasang. \dd{(relier)} sambung, menyambung. \dd{\dt~une corde} ikat, mengikat. \da{adj.} tersambung, terpasang, terikat, terlampir. \dd{pièce \dt} lampiran. \de{attaché.} \da{n. adm.} atase.
+
+\de{atte.} buah srikaya. \de{attier.} srikaya.
+
+\de{attelle.} \dd{(méd.)} penganduh.
+
+\de{attendre.} tunggu, menunggu.
+
+\de{attirer.} menarik. \de{attirance.} daya tarik.
+
+\de{augmenter.} menaikkan. \de{augmentation.} peningkatan, kenaikan. \dd{\dt~de salaire} kenaikan gaji.
+
+\de{auteur.} \dd{(créateur)} pengarang. \dd{(écrivain, scénariste)} sastrawan, penulis. \dd{(peintre)} pelukis. \dd{(compositeur)} komposer. \dd{(réalisateur de film)} sutradara. \dd{(sculpteur)} seniman pemahat. \dd{(inventeur)} penemu. \dd{\dt~d'un crime} penindak kejahatan.
+
+\de{autobus.} bus.
+
+\de{autocollant.} stiker.
+
+\de{autoroute.} \dd{\dt~à péage} jalan tol.
+
+\de{aval.} hilir.
+
+\de{avalanche.} \dd{\rightarrow~éboulement}.
+
+\de{avaler.} menelan. \de{avalé.} tertelan.
+
+\de{avancer.} maju, berjalan ke depan. \de{avance.} \dd{en \dt} lebih awal, lebih dahulu. \de{avant.} \dd{(position)} depan. \dd{à l'\dt} di depan. \dd{(antérieur)} sebelum, sebelumnya. \de{avant-propos.} kata pengantar.
+
+\de{avion.} pesawat udara, pesawat.
+
+\de{avocat.} \dd{(profession)} pengacara. \dd{(fruit)} alpokat.
+
+\de{avouer.} \dd{(confesser)} mengaku, \dd{(admettre)} mengakui.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge B}
+
+\de{bâche.} terpal.
+
+\de{barque.} perahu.
+
+\de{baigner.} \dd{(tremper)} merendam. \dd{se \dt} mandi.
+
+\de{baisser.} turun, menurun. \de{baisse.} penurunan.
+
+\de{banane.} pisang. \de{bananier.} pohon pisang.
+
+\de{banian.} beringin, pohon beringin.
+
+\de{banlieue.} kota pinggiran.
+
+\de{barre.} \dd{\dt~à mine} linggis. \dd{(typ.)} \dd{\dt~oblique} garis miring. \dd{\dt~oblique inversée} garis miring terbalik.
+
+\de{basalte.} basal.
+
+\de{base.} dasar.
+
+\de{bateau.} kapal, perahu.
+
+\de{batterie.} \dd{(de voiture)} baterei, aki. \dd{\dt~sèche} aki kering. \dd{(mus.)} drumset.
+
+\de{beau.} bagus, keren. \dd{(mét.)} cerah. \dd{(pour un homme)} cakep. \dd{(pour une femme)} cantik, \dd{jav.} ayu.
+
+\de{Belgique.} Belgia. \de{belge.} \da{adj.} belgia. \da{n.} orang Belgia. 
+
+\de{béquille.} \dd{(de moto)} standar. \dd{(canne)} kruk.
+
+\de{besoin.} kebutuhan. \dd{\dt~en énergie électrique} kebutuhan daya listrik.
+
+\de{béton}. beton.
+
+\de{bibliographie.} daftar pustaka, kepustakaan.
+
+\de{billion.} trilion.
+
+\de{bissextil.} kabisat.
+
+\de{blanc.} putih. \de{blanchâtre.} keputih-putihan.
+
+\de{bleu.} biru. \de{bleuâtre.} kebiru-biruan.
+
+\de{blesser.} melukai. \de{blessé.} terluka. \de{blessure.} luka. \dd{\dt~grave} luka berat.
+
+\de{blizzard.} badai salju.
+
+\de{bocal.} toples.
+
+\de{bois.} kayu. \dd{(forêt)} hutan. \dd{maison en \dt} rumah berkayu.
+
+\de{bœuf.} \da{(mâle castré)} lembu. \da{viande de \dt} daging sapi.
+
+\de{bord.} pinggir, tepi.
+
+\de{borne.} tonggak. \dd{\dt~routière} pal, \dd{jav.} pathok.
+
+\de{boucher.} \da{v.} tutup, menutup. \da{n.} tukang daging. \de{bouchon.} tutup, penutup, sumbat, penyumbat. \dd{\dt~de liège} sumbat gabus. \dd{tire-\dt} kotrek. \de{bouche.} \dd{(partie du corps)} mulut. \dd{(orifice)} lubang.
+
+\de{boue.} lumpur.
+
+\de{bougie.} lilin. \dd{(moteur thermique)} busi.
+
+\de{bouillir.} mendidih. \dd{faire \dt} mendidihkan.
+
+\de{boulon.} sekrup, mur dan baut.
+
+\de{bourse.} \dd{(fin.)} bursa. \dd{\dt~d'études} beasiswa.
+
+\de{bout.} \dd{(extrémité)} ujung. \dd{(morceau)} sepotong. \dd{\dt de bois} sepotong kayu.
+
+\de{bras.} lengan.
+
+\de{briller.} berkilau, mengkilat.
+
+\de{brique.} batu bata.
+
+\de{briquet.} korek, korek api (bergas).
+
+\de{brise.} \dd{litt.} angin semilir.
+
+\de{bronze.} perunggu.
+
+\de{bronzer.} \dd{(sècher au soleil)} berjemur.
+
+\de{brouillard.} kabut. \dd{\dt~épais} kabut tebal. \dd{faire \dt} berkabut, tertutup kabut.
+
+\de{bruit.} keributan. \dd{(voix)} suara. \de{bruyant.} ribut.
+
+\de{brûler.} membakar. \de{brûlé.} terbakar. \dd{(culin.)} gosong.
+
+\de{brume.} kabut tipis.
+
+\de{budget.} anggaran, bujet.
+
+\de{bulle.} gelembung. \dd{gonfler comme une \dt} menggelembung. \dd{faire des \dt~de savon} gelembung-gelembungan.
+
+\de{burin.} betel.
+
+\de{bureau.} \dd{(administration)} kantor. \dd{(salle)} ruangan. \dd{(table)} meja kerja.
+
+\de{but.} tujuan. \dd{(aspiration, idéal)} cita-cita.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge C}
+
+\de{câble.} kabel. \dd{\dt~électrique} kabel listrik.
+
+\de{cacher.} menyembunyikan. \dd{se \dt} bersembunyi. \de{caché.} tersembunyi. \de{cachette.} persembunyian.
+
+\de{cadenas.} gembok. \dd{\dt~à code} gembok kombinasi.
+
+\de{cadre.} \dd{(objet)} pigura. \dd{(de vélo)} kerangka. \dd{\dt~d'entreprise} juragan. \dd{fig.} rangka.
+
+\de{cajou.} \dd{noix de \dt} kacang mete.
+
+\de{calcaire.} gamping, batu gamping, batu kapur.
+
+\de{caldeira.} \dd{(géol.)} kaldera.
+
+\de{calibration.} kalibrasi.
+
+\de{campagne.} desa. \dd{(sci.) \dt~de mesure} pengukuran. \da{pol.} kampanye.
+
+\de{camion.} truk.
+
+\de{canine.} gigi taring.
+
+\de{cannelle.} kayu manis. \dd{pomme \dt} buah srikaya.
+
+\de{caoutchouc.} karet.
+
+\de{capitale.} \da{n.} ibu kota.
+
+\de{capteur.} sensor.
+
+\de{caractéristique.} fitur. \da{adj.} tertentu, tetap, khusus.
+
+\de{carambole.} belimbing. \de{carambolier.} pohon belimbing.
+
+\de{carbone.} karbon. \dd{dioxyde de \dt} karbon dioksida. \dd{monoxyde de \dt} karbon monoksida.
+
+\de{carré.} persegi. \dd{racine \dt} akar kuadrat. \dd{au \dt} bilangan kuadrat, pangkat dua.
+
+\de{carrefour.} \dd{(à quatre branches)} perempatan. \dd{(à trois branches)} pertigaan. \dd{(à cinq branches)} perlimaan.
+
+\de{carte.} kartu. \dd{\dt~mémoire} kartu memori. \dd{(plan)} peta.
+
+\de{carton.} kardus.
+
+\de{casque.} \dd{(de protection)} helm.
+
+\de{casser.} patah, rusak, mematahkan, merusakkan.
+
+\de{catastrophe.} bencana. \dd{\dt~géologique} kebencanaan geologi.
+
+\de{causer.} menyebabkan, mengakibatkan. \da{(parler)} ngomong, ngobrol. \de{cause.} sebab, penyebab. \dd{à \dt~de} gara-gara, dikarenakan.
+
+\de{cave.} gudang bawah tanah.
+
+\de{ceinture.} sabuk, ikat pinggang. \dd{\dt~de sécurité} sabuk pengaman. \dd{\dt~de feu du Pacifique} cincin api Pasifik, lingkaran api Pasifik.
+
+\de{cendre.} abu. \dd{\dt~volcanique} abu vulkanik.
+
+\de{cent.} seratus. centaine. ratusan.
+
+\de{centre.} pusat. \dd{(géom.)} titik pusat.
+
+\de{cercle.} \dd{(math.)} lingkaran.
+
+\de{chaîne.} rantai. \dd{\dt~de mesure} rantai pengukuran. \dd{\dt~de magasins} kongsi toko.
+
+\de{chaise.} kursi. \dd{\dt~longue} kursi malas.
+
+\de{chambre.} kamar. \dd{\dt~magmatique} kantong magma, kamar magma, dapur magma.
+
+\de{chapeau.} topi.
+
+\de{chapitre.} bab.
+
+\de{char.} \da{(mil.)} tank, kereta perang. \de{charrette} gerobak, kereta. \dd{\dt~à cheval} kereta kuda, delman, \dd{(à Java Centre)} andong, dokar, \dd{(à Jakarta)} ebro, \dd{(à Sumatra)} bendi.
+
+\de{chaud.} panas. \de{chauffage.} \dd{(appareil)} mesin pemanas. \dd{(procédé)} cara memanaskan. \dd{réchauffer.} memanaskan. \de{échauffement.} pemanasan.
+
+\de{chaussée.} \da{n.} jalan. \dd{rez-de-\dt} lantai dasar. \de{chaussure.} sepatu. \de{chausse-pied.} sendok sepatu.
+
+\de{chemin.} jalan. \dd{\dt~de randonnée} jalan pendakian.
+
+\de{cheminée.} \dd{(âtre)} perapian.
+
+\de{cher.} \dd{(onéreux)} mahal. \dd{pas \dt} murah.
+
+\de{chercher.} cari, mencari. \dd{(sci.)} meneliti. \de{chercheur.} peneliti. \de{recherche.} \dd{(sci.)} penyelidikan, penelitian.
+
+\de{cheval.} kuda.
+
+\de{cheveu.} rambut.
+
+\de{cheville.} mata kaki.
+
+\de{chèvre.} kambing.
+
+\de{chien.} anjing. \dd{\dt~de prairie} anjing padang rumput.
+
+\de{chiffre.} angka.
+
+\de{choc.} \dd{(méc.)} tabrakan, benturan. \dd{(psy.)} syok.
+
+\de{chuter.} jatuh, berjatuhan. \de{faire \dt} menjatuhkan. \de{chute.} \dd{\dt~de pierres} guguran. 
+
+\de{cible.} sasaran.
+
+\de{cil.} bulu mata.
+
+\de{ciment.} semen. \dd{\dt~prompt} semen instan.
+
+\de{cinq.} lima. \de{cinquante.} lima puluh. \de{cinquantaine.} lima puluhan.
+
+\de{cintre.} hanger, gantungan baju.
+
+\de{circonférence.} \dd{(géom.)} keliling.
+
+\de{circulaire.} \dd{(adj.)} bundar, bulat. \dd{(n. adm.)} surat edaran.
+
+\de{citer.} cuplik, mencuplik. \de{citation.} cuplikan.
+
+\de{citron.} \dd{\dt~vert} jeruk nipis. \dd{\dt~jaune} lemon.
+
+\de{clair.} jelas. \dd{(visuel)} terang. \dd{(météo)} cerah. \dd{(couleur)} muda.
+
+\de{clavier.} \dd{(d'ordinateur)} papan ketik. \dd{(instrument de musique)} kibor.
+
+\de{client.} klien, tamu. \dd{(acheteur)} pembeli. \dd{(locataire)} penyewa. \dd{(d'une banque)} nasabah.
+
+\de{clignoter.} berkedap-kedip. \de{clignotant.} \da{n.} lampu belok, riting.
+
+\de{clinique.} rumah sakit swasta. \dd{\dt~spécialisée} klinik.
+
+\de{clouer.} memaku. \dd{cloué.} dipaku, terpaku. \dd{clou.} paku.
+
+\de{cochon.} babi.
+
+\de{coco.} \dd{noix de \dt} kelapa. \dd{eau de \dt} air kelapa muda. \dd{lait de \dt} santan. \de{cocotier.} pohon kelapa.
+
+\de{cœur.} jantung. \dd{(sentiment)} hati. \dd{(centre)} pusat.
+
+\de{coïncidence.} suatu kebetulan.
+
+\de{colle.} lem, perekat. \dd{\dt~cyanoacrylate} lem G.
+
+\de{collège.} \da{\rightarrow~école.}
+
+\de{collier.} \dd{(bijou)} kalung. \dd{(bracelet)} gelang. \dd{\dt~de serrage} kabel tis, gelang jepitan, klam.
+
+\de{colline.} bukit.
+
+\de{colonne.} kolom. \dd{\dt~éruptive} kolom letusan.
+
+\de{combava.} jeruk purut.
+
+\de{combustible.} bahan bakar. \dd{\dt~fossile} bahan bakar fosil.
+
+\de{commencer.} mulai, mengawali. \de{recommencer.} ulangi. \de{commencement.} awal.
+
+\de{composant.} komponen, bagian. \dd{\dt~chimique} senyawa.
+
+\de{comprimer.} memadatkan. \de{air comprimé} udara yang ditekan. \de{compression.} pemadatan. \dd{\dt~de données} pemadatan data. \de{compresseur.} kompresor.
+
+\de{compter.} menghitung. \de{compteur.} alat hitung, meteran. \dd{\dt~électrique} meteran listrik.
+
+\de{concave.} cekung.
+
+\de{conclure.} menyimpulkan. \de{conclusion.} kesimpulan.
+
+\de{condition.} condisi, syarat. \dd{\dt~d'utilisation} ketentuan penggunaan.
+
+\de{conduire.} mengemudi, menyetir. \de{conduite.} \dd{\dt~à gauche} setir kiri, lajur kemudi kiri.
+
+\de{cône.} kerucut. \dd{\dt~de scories} kerucut bara.
+
+\de{connecter.} \dd{(joindre)} menyambung, memasang. \de{déconnecter.} melepas. \dd{(arracher)} mencabut.
+
+\de{conseiller.} menyarankan. \de{conseil.} saran. \dd{(instance)} dewan.
+
+\de{conséquence.} akibat. \dd{en \dt} akibatnya.
+
+\de{constitution.} \dd{(adm.)} undang-undang dasar.
+
+\de{continent.} benua.
+
+\de{convexe.} cembung.
+
+\de{conseiller.} menyarankan. \de{conseil.} saran.
+
+\de{coopérer.} bekerjasama. \de{coopération.} kerjasama, \dd{(association commerciale)} koperasi.
+
+\de{copyright.} hak cipta.
+
+\de{coq.} ayam jantan. \dd{combat de \dt} sabung ayam.
+
+\de{corde.} tali. \dd{\dt~d'escalade} tali pendakian, tali karmantel.
+
+\de{corps.} badan.
+
+\de{corossol.} sirsak. \de{corossolier.} pohon sirsak.
+
+\de{côté.} \dd{(bord)} samping. \dd{(face)} sisi. \dd{(géom.)} rusuk.
+
+\de{cou.} leher.
+
+\de{coucher.} \da{v.} membaringkan, menidurkan. \dd{\dt~avec (une pers.)} meniduri. \dd{se \dt, être couché} berbaring, tidur. \da{n.} \dt~de soleil matahari terbenam. \de{couche.} lapisan. \dd{\dt-culotte} popok.
+
+\de{coude.} sikut.
+
+\de{couler.} mengalir, mencair. \de{coulée.} aliran. \dd{\dt~de boue} aliran lumpur, lahar. \dd{\dt~pyroclastique} aliran piroklastik.
+
+\de{couper.} potong, memotong.
+
+\de{courant.} \dd{(flux)} aliran, arus. \dd{\dt~électrique} arus listrik.
+
+\de{courriel.} surat elektronik, surel, imel, email.
+
+\de{couteau.} pisau. \de{coutelat.} \da{\rightarrow~machette.}
+
+\de{couvrir.} (fermer) menutupi. (englober) meliputi.
+
+\de{craie.} kapur.
+
+\de{crapaud.} kodok, katak puru.
+
+\de{cratère.} \dd{(volcanique)} kawah.
+
+\de{créer.} menciptakan. \de{création.} ciptaan, \da{(d'artiste)} karya. \de{créateur.} pencipta.
+
+\de{crépuscule.} senja.
+
+\de{creuser.} menggali. \dd{(labourer)} mencangkul.
+
+\de{cricket.} \dd{(insecte)} belalang, \da{jav.} walang.
+
+\de{crime.} kejahatan. \de{criminel.} penjahat.
+
+\de{crochet.} \dd{(couture)} merenda. \dd{(typ.)} tanda kurung siku, kurung tegak.
+
+\de{croire.} percaya, memercayai. \de{croyance.} kepercayaan. \de{croyant.} \da{n.} penganut, pemeluk. \da{adj.} beragama.
+
+\de{cube.} kubus. \dd{au \dt} bilangan kubik, pangkat tiga.
+
+\de{cuisse.} paha.
+
+\de{cuivre.} tembaga.
+
+\de{cycle.} siklus.
+
+\de{cythère.} \dd{prune \dt} kedondong.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge D}
+
+\de{danger.} bahaya. \dd{mettre en \dt} membahayakan. \de{dangereux.} berbahaya.
+
+\de{déborder.} luap, meluap. \de{débordé.} \dd{être \dt} sibuk.
+
+\de{debout.} berdiri, tegak.
+
+\de{débuter.} memulai, mengawali. \de{début.} awal, mula.
+
+\de{décider.} putuskan, memutuskan. \de{décision.} keputusan.
+
+\de{décoration.} \dd{(médaille)} penyerahan. \dd{\dt~honorifique} penyerahan tanda kehormatan.
+
+\de{défier.} menantang. \de{défi.} tantangan.
+
+\de{déformation.} deformasi.
+
+\de{dense.} padat. \de{densité.} \da{\rightarrow~masse volumique.}
+
+\de{dent.} gigi. \dd{\dt~de sagesse} gigi bungsu. \dd{\dt~de lait} gigi susu. \dd{fausse \dt} gigi palsu. \de{dentiste.} dokter gigi. \dd{arracheur de \dt} tukang gigi.
+
+\de{déplacer.} pindah, memindahkan. \de{déplacement.} \dd{(phys.)} perpindahan. \dd{être en \dt} sedang keluar.
+
+\de{descendre.} turun, menuruni. \de{descente.} arah turun. \de{descendant.} turunan. \de{descendance.} keturunan.
+
+\de{détecter.} mendeteksi. \de{détection.} deteksi. \dd{télé-\dt} pemancaran jarak jauh. \de{détectable.} terdeteksi.
+
+\de{derrière.} \da{\rightarrow~arrière.}
+
+\de{détail.} detil.
+
+\de{devant.} \da{\rightarrow~avant.}
+
+\de{devis.} \dd{(proposition de prix)} penawaran harga.
+
+\de{deux.} dua. \de{demi.} \dd{(moitié)} setengah. \de{vingt.} dua puluh. \de{vingtaine.} dua puluhan.
+
+\de{développer.} mengembangkan. \de{développement.} pengembangan. \de{pays en \dt} negara berkembang.
+
+\de{diamètre.} diameter.
+
+\de{digue.} dam, bendungan, \da{jav.} waduk. \dd{\dt~anti-lahar} kepengendali lahar.
+
+\de{dimanche.} hari Minggu.
+
+\de{discuter.} membahas. \de{discussion.} pembahasan.
+
+\de{disjoncteur.} MCB.
+
+\de{distance.} jarak. \dd{\dt~de glissement (des nuées ardentes)} jarak luncur.
+
+\de{diviser.} membagi. \dd{(pol.)} memecah-belah. \de{division.} \dd{(math.)} pembagian.
+
+\de{dix.} sepuluh. \de{dizaine.} puluhan.
+
+\de{doigt.} jari.
+
+\de{domaine.} bidang, domain, daerah kekuasaan. \dd{nom de \dt~ internet} ranah internet.
+
+\de{dôme.} kubah. \de{\dt~de lave} kubah lava.
+
+\de{donner.} kasih, beri, memberi, memberikan. \de{donné.} \da{adj.} dikasih, diberikan. \de{donnée.} \da{n.} data. \de{don.} bantuan. \da{(capacité)} bakat. \da{avoir un \dt} berbakat. 
+
+\de{dos.} punggung. \dd{\dt~d'âne (ralentisseur)} polisi tidur.
+
+\de{douane.} pabean, duane. \de{douanier.} \dd{(fonctionnaire)} pegawai pabean. \dd{douanes, taxe douanière} bea cukai.
+
+\de{drapeau.} bendera.
+
+\de{droit.} \dd{(permission, prérogative)} hak. \dd{(forme géométrique)} lurus. \dd{se tenir \dt} tegak.
+
+\de{droite.} \da{n.} kanan.
+
+\de{dur.} keras.
+
+\de{durian.} \dd{(arbre)} pohon durian. \dd{(fruit)} durian.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge E}
+
+\de{eau.} air. \da{jav.} banyu. \dd{\dt~potable} air minum. \dd{\dt~minérale} aqua. \dd{\dt~gazeuse} aqua bergas. \dd{\dt~de javel} Bayclin.
+
+\de{éboulement.} longsoran, guguran. \dd{\dt~de lave rougeoyante} guguran lava pijar.
+
+\de{échantillonner.} sampling. \de{échantillon.} sampel. \de{échantillonnage.} pengambilan.
+
+\de{école.} sekolah. \dd{\dt~maternelle} taman kanak-kanak, TK. \dd{\dt~élémentaire} sekolah dasar, SD. \dd{\dt~primaire} sekolah menengah pertama, SMP. \dd{\dt~secondaire} sekolah menengah atas, SMA. \de{écolier.} anak sekolah.
+
+\de{écouler (s').} mengalir. \dd{(temps)} berlalu. \de{écoulement.} pengaliran, penyaluran.
+
+\de{éclair.} kilat. \dd{(foudre)} petir.
+
+\de{éclipse.} gerhana.
+
+\de{écran.} layar.
+
+\de{écrou.} mur.
+
+\de{effacer.} hapus, menghapus. \de{effacement.} penghapusan.
+
+\de{effondrer.} \dd{s'\dt~(bâtiment)} runtuh. \de{effondrement.} keruntuhan.
+
+\de{égaliser.} meratakan. \de{égal.} sama. \dd{(math.)} sama dengan. \de{égalité.} persamaan, kesamaan.
+
+\de{église.} gereja.
+
+\de{Égypte.} Mesir. \de{égyptien.} \da{adj.} mesir. \da{n.} orang Mesir.
+
+\de{élégant.} \dd{(pour un homme)} keren, \da{jav.} gantheng.
+
+\de{élément.} unsur. \dd{\dt~chimique} senyawa.
+
+\de{éloigner.} menjauhkan. \de{loin.} jauh.
+
+\de{embarquer.} naik. \de{embarquement.} embarkasi. \dd{carte d'\dt} boarding pass.
+
+\de{embrayage.} \dd{(méc.)} kopling.
+
+\de{émettre.} \dd{(d'une antenne)} memancar. \de{émetteur.} alat pengirim. \de{émission.} \de{(d'ondes)} pancaran, siaran.
+
+\de{empoisonner.} meracuni. \de{empoisonné.} \dd{(toxique)} beracun, \dd{(avoir été \dt)} keracunan. \de{empoisonnement.} peracunan. \de{poison.} racun.
+
+\de{empreinte.} \dd{\dt~digitale} sidik jari. \dd{(d'animal)} jejak, tapak. \dd{\dt~génétique} pengujian DNA. \dd{(conséquence)} jejak. \dd{\dt~carbone} jejak karbon.
+
+\de{emprunter.} pinjam, \da{form.} meminjam. \de{emprunt.} pinjaman.
+
+\de{enfanter.} melahirkan. \de{enfant.} anak, \dd{plur.} anak-anak. \dd{\dt~en bas âge} anak balita. \de{enfantin.} kekanak-kanakan.
+
+\de{enfer.} neraka.
+
+\de{enregistrer.} merekam. \de{enregistrement.} rekaman, perekaman.
+
+\de{entonnoir.} corong.
+
+\de{entrer.} masuk. \dd{(faire entrer)} masukkan. \dd{entrer des données} memasukkan data. \de{entrée.} masuk, masukan. \dd{porte d'\dt} pintu masuk.
+
+\de{épaissir.} menebalkan. \de{épais.} tebal. \de{épaisseur.} ketebalan, tebalnya.
+
+\de{épauler.} mendukung. \de{épaule.} bahu.
+
+\de{épicentre.} episenter, pusat gempa.
+
+\de{équation.} persamaan.
+
+\de{équitable.} seimbang.
+
+\de{équivalent.} padanan.
+
+\de{erreur.} salah, kesalahan, eror.
+
+\de{éruption.} letusan, erupsi. \dd{entrer en \dt} meletus.
+
+\de{espace.} ruang. \dd{(trou, intervalle)} celah. \dd{(astronomie)} antariksa. \de{spacieux.} \dd{(large)} luas.
+
+\de{Espagne.} Spanyol. \de{espagnol.} \da{adj.} spanyol. \da{n.} orang Spanyol.
+
+\de{espérer.} harap, berharap, \da{form.} mengharapkan. \de{espoir.} harapan. \de{espérance.} harapan.
+
+\de{espionner.} memata-matai. \de{espion.} mata-mata. \de{espionnage.} spionase, pemata-mataan.
+
+\de{essayer.} coba, mencoba. \de{essai.} \dd{(tentative)} percobaan.
+
+\de{est.} \dd{(direction)} timur, \da{jav.} wetan.
+
+\de{estimer.} \dd{(une personne)} menghormati. \dd{(une quantité)} memperkirakan, \da{jav.} mengira-ira. \de{estimation.} perkiraan. \de{estime.} rasa hormat.
+
+\de{étain.} timah putih.
+
+\de{état.} kondisi. \dd{(pays)} negara. \dd{chef d'\dt} kepala negara. \dd{\dt-Unis d'Amérique} Amerika Serikat.
+
+\de{éteindre.} mematikan. \dd{\dt~la lumière} mematikan lampu. \de{éteint.} mati.
+
+\de{étourneau.} \dd{\dt~sansonnet} jalak.
+
+\de{étranger.} \da{n.} orang asing. \dd{à l'\dt} di luar negeri. \de{étrange.} aneh, asing.
+
+\de{étudier.} mempelajari, belajar, meneliti. \de{étude.} \dd{(scientifique)} penyelidikan. \dd{\dt~bibliographique} kajian pustaka. \de{étudiant.} mahasiswa. \de{étudiante.} mahasiswi.
+
+\de{évacuer.} mengeluarkan. \dd{(habitants)} mengungsi. \dd{faire \dt} mengungsikan. \dd{(se mettre en sécurité)} mengamankan. \de{évacuation.} pengungsian, pengeluaran, pengamanan.
+
+\de{examen.} ujian, tes. \dd{\dt~médical} pemeriksaan dokter.
+
+\de{exemple.} contoh.
+
+\de{exiger.} menuntut. \de{exigence.} tuntutan. 
+
+\de{exister.} eksis. \de{existence.} keadaan.
+
+\de{expédier.} kirim, mengirim. \de{expédition.} pengiriman. \dd{(voyage)} ekspedisi.
+
+\de{expérience.} pengalaman.
+
+\de{expert.} ahli, pakar.
+
+\de{expirer.} keluarkan nafas. \de{expiré.} kadaluwarsa. \de{expiration.} \dd{date d'\dt} tanggal kedaluwarsa.
+
+\de{exploser.} \dd{(bombe)} meledak, \dd{(volcan)} meletus. \de{explosion.} ledakan, \dd{(souffle)} hembusan.
+
+\de{exposant.} \dd{(math.)} pangkat.
+
+\de{extensomètre.} ekstensometer. \de{extensométrie.} pengukuran ekstenso.
+
+\de{extraire.} mengambil. \de{extrait.} cuplikan. \dd{(nourriture)} ekstrak. \de{extraction.} \dd{\dt~minière} penambangan mineral.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge F}
+
+\de{face.} \dd{(d'une personne)} wajah, muka. \dd{(d'une chose)} muka, sisi.
+
+\de{facture.} kwitansi, kuitansi.
+
+\de{faible.} lemah, rendah.
+
+\de{faille.} \dd{(tectonique)} belahan bumi.
+
+\de{falaise.} tebing.
+
+\de{fauteuil.} kursi. \dd{\dt~roulant} kursi roda.
+
+\de{femme.} perempuan, wanita, ibu. \dd{jeune \dt} gadis, nona. \de{femelle.} betina. \de{féminin.} \dd{(genre)} perempuan, wanita.
+
+\de{fer.} \dd{(métal)} besi. \dd{\dt~à béton} besi beton. \dd{\dt~à cheval} tapal kuda.
+
+\de{fermer.} menutup. \de{fermé.} tutup, tertutup. \de{fermeture.} penutupan. \dd{\dt~éclair} ritsleting.
+
+\de{fesse.} pantat.
+
+\de{feu.} api. \dd{\dt~tricolor} lampu lalu lintas, lampu apill. \dd{arme à \dt} senjata api.
+
+\de{ficelle.} tali.
+
+\de{fiche.} catatan. \dd{élec. \dt~mâle} colokan listrik. \de{fichier.} berkas.
+
+\de{ficus.} ara, pohon ara.
+
+\de{fil.} \dd{(souple)} benang, dawai, kawat. \dd{\dt~de fer} kawat besi. \dd{\dt~électrique} kabel listrik. \dd{sans-\dt} nirkabel, wifi.
+
+\de{file.} lajur. \dd{\dt~d'attente} antrian.
+
+\de{fin.} \dd{(peu épais)} tipis. \dd{(terminaison)} akhir.
+
+\de{fissure.} retakan.
+
+\de{flanc.} lereng.
+
+\de{fluide.} \da{adj.} lancar. \dd{(phys.)} fluida. \de{fluidifier.} mencairkan.
+
+\de{foi.} kepercayaan, keyakinan.
+
+\de{foie.} hati.
+
+\de{foire.} bursa.
+
+\de{fonction.} fungsi. \de{fonctionnaire.} pegawai negeri. \dd{haut-\dt} pejabat.
+
+\de{football.} sepak bola.
+
+\de{force.} kekuatan. \dd{(phys.)} gaya, daya.
+
+\de{forêt.} hutan. \dd{(jungle)} hutan rimba.
+
+\de{forer.} melubangi, mengebor. \de{foreuse.} \dd{(perceuse)} bor. \de{foret.} mata bor.
+
+\de{former.} membentuk. \de{formé.} terbentuk. \dd{être \dt} terbentuk, dibentuk. \de{forme.} bentuk. \dd{avoir une \dt} berbentuk. \dd{être en \dt} sehat wal'afiat, sehat-sehat, segar. \de{formation.} pembentukan. \dd{(apprentissage)} pendidikan, penataran, latihan. \dd{\dt~pratique} diklat, pendidikan dan latihan. \dd{centre de \dt} pusdiklat.
+
+\de{fortifier.} memperkuat. \de{fort.} kuat, perkasa.
+
+\de{foudre.} petir, halilintar.
+
+\de{fougère.} pakis, paku. \dd{\dt~arborescente} pakis hutan, pakis gunung, paku pohon.
+
+\de{fourmi.} semut. \dd{avoir des \dt} kesemutan.
+
+\de{foyer.} rumah, rumah tanga. \dd{(cheminée)} perapian.
+
+\de{fracture.} rekahan, celah.
+
+\de{France.} Prancis. \de{français.} \da{adj.} perancis. \da{n.} orang perancis.
+
+\de{fréquent.} sering. \de{fréquence.} frekwensi.
+
+\de{froid.} dingin. \da{jav.} adhem. \de{refroidir.} mendinginkan. \de{refroidisseur.} mesin pendingin.
+
+\de{frotter.} gosok, menggosok. \de{frottement.} gesekan. \dd{(phys.)} gaya gesek.
+
+\de{fruit.} buah. \de{fruits.} buah-buahan. \dd{\dt~du dragon} buah naga.
+
+\de{fumer.} berasap, keluar asap, \da{form.} mengeluarkan asap. \dd{(du tabac)} rokok, merokok. \de{fumé.} \da{adj.} asap. \de{fumée.} \da{n.} asap. \de{fumeur.} perokok. \dd{salle \dt} ruangan merokok. \dd{zone non \dt} kawasan bebas asap rokok.
+
+\de{fuseau.} \dd{\dt~horaire} zona waktu.
+
+\de{fusible.} sekring.
+
+\de{fusionner.} meleburkan. \de{fusion.} penggabungan. \dd{(phys.} lebur. \dd{point de \dt} titik lebur, titik leleh.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge G}
+
+\de{gant.} sarung tangan, kaos tangan.
+
+\de{garde-boue.} spakbor, \da{jav.} slebor.
+
+\de{garer.} \dd{(un véhicule)} parkir. \de{gare.} stasiun.
+
+\de{gauche.} \da{n.} kiri.
+
+\de{gaz.} gas. \dd{\dt~naturel} gas alam. \dd{\dt~à effet de serre} gas rumah kaca. \dd{\dt~toxique} gas beracun.
+
+\de{gelée.} \dd{(alimentaire)} selai cair. \dd{\dt~ royale} royal jelly. \dd{(mét.)} embun beku.
+
+\de{genou.} lutut, \da{jav.} dengkul. \de{genouillère.} pelindung lutut.
+
+\de{gésier.} empedu, ampela.
+
+\de{gestion.} pengurusan.
+
+\de{girembelle.} cermai. \de{girembellier.} pohon cermai.
+
+\de{glisser.} kepleset, terpeleset. \de{glissant.} licin. \de{glissement.} longsor, kelongsoran.
+
+\de{goutter.} menetes. \de{goutte.} tetes. \de{gouttière.} talang.
+
+\de{gouverner.} memerintah. \de{gouverneur.} gubernur. \de{gouvernement.} \dd{(pol.)} pemerintah. \dd{gouvernance.} pemerintahan.
+
+\de{goyave.} jambu biji. \de{goyavier.} pohon jambu biji.
+
+\de{grade.} \dd{adm.} pangkat. \de{graduation.} tingkat, graduasi.
+
+\de{graine.} biji. \de{granularité.} granularitas.
+
+\de{graisse.} lemak. \dd{méc.} gemuk.
+
+\de{grammaire.} tata bahasa. \de{grammatical.} gramatikal.
+
+\de{gramme.} gram.
+
+\de{gras.} \da{adj.} berlemak. \dd{caractère \dt} huruf tebal.
+
+\de{gratuit.} gratis, cuma-cuma. \de{gratuitement.} dengan cuma-cuma.
+
+\de{gravité.} \dd{(pesanteur)} gaya berat. \de{gravimètre.} gravimeter.
+
+\de{Grèce.} Yunani. \de{grec.} \da{adj.} yunani. \dd{(gentilé)} orang Yunani. \dd{(langue)} bahasa Yunani.
+
+\de{grêle.} hujan es.
+
+\de{grenouille.} kodok.
+
+\de{griller.} bakar, membakar.
+
+\de{grondement.} \dd{(son)} suara gemuruh.
+
+\de{guérir.} sembuh, pulih. \de{guérison.} kesembuhan.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge H}
+
+\de{hâcher.} memotong-motong, menggiling. \da{culin.} mencacah. \dd{viande \dt} daging cacah, daging giling. \de{hâche.} kapak. \de{hâchoire.} mesin penggiling.
+
+
+
+\de{haleine.} bau nafas.
+
+\de{hameçon.} umpan, kail.
+
+\de{handicapé.} cacat. \dd{personne \dt} orang cacat.
+
+\de{hanche.} pinggul.
+
+\de{hélice.} baling. \dd{avion à \dt} pesawat baling-baling. \dd{(math.)} heliks.
+
+\de{heure.} jam, pukul. \de{horaire.} \dd{n.} jadwal. \dd{adj.} per jam.
+
+\de{histoire.} sejarah. \de{historique.} \da{n.} riwayat.
+
+\de{Hollande.} \dd{(Pays-Bas)} Belanda. \de{hollandais.} \dd{(néerlandais)} \da{adj.} belanda. \dd{(gentilé)} orang Belanda. \dd{(langue)} bahasa Belanda. 
+
+\de{hôpital.} rumah sakit.
+
+\de{homme.} bapak, orang. \dd{(humain)} manusia. \dd{(adulte)} pria dewasa. \dd{(personne)} seorang. \dd{(genre)} laki-laki, pria. \de{humanité.} kemanusiaan.
+
+\de{houe.} cangkul.
+
+\de{huile.} minyak. \dd{\dt~de moteur} oli mesin, minyak pelumas mesin.
+
+\de{huit.} delapan. \de{quatre-vingt.} delapan puluh.
+
+\de{huissier.} \dd{\dt~de justice} juru sita.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge I}
+
+\de{image.} gambar, citra. \dd{\dt satellite} citra satelit.
+
+\de{immédiat.} segera. \de{immédiatement.} dengan segera.
+
+\de{impacter.} membentur, menabrak. \dd{(influencer)} berdampak. \de{impact.} \dd{(choc)} benturan. \dd{(influence)} dampak.
+
+\de{impair.} \dd{(math.)} ganjil.
+
+\de{imperméable.} \dd{adj.} tahan air, tidak tembus air.
+
+\de{incendier.} membakar. \de{incendie.} kebakaran.
+
+\de{inciser.} potong, memotong. \de{incisive.} gigi seri.
+
+\de{inclinomètre.} tiltmeter. \de{inclinométrie.} \dd{\dt~sèche} pengukuran ungkit kering.
+
+\de{indépendance.} kemandirian. \dd{jour de l'\dt} Hari Kemerdekaan. \de{indépendant.} mandiri.
+
+\de{indemniser.} mengganti biaya. \de{indemnisation.} penggantian biaya. \de{indemnité.} tunjangan. \dd{\dt~journalières} tunjangan harian.
+
+\de{initialiser.} mengatur. \de{réinitialiser.} mengatur ulang.
+
+\de{initiative.} prakarsa.
+
+\de{installer.} memasang. \de{installation.} pemasangan, instalasi.
+
+\de{intensité.} \dd{\dt~sismique} intensitas gempa.
+
+\de{interrompre.} memutus, menghentikan. \de{interrompu.} terputus, terhenti. \de{interrupteur.} sakelar.
+
+\de{intervenir.} mengintervensi, melakukan intervensi. \de{intervention.} intervensi. \dd{\dt~de contrôle} pemeriksaan.
+
+\de{introduction.} pendahuluan.
+
+\de{islam.} islam.
+
+\de{Italie.} Italia. \de{italien.} \da{adj.} italia. \dd{(gentilé)} orang Italia. \dd{(langue)} bahasa Italia.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge J}
+
+\de{Japon.} Jepang. \de{japonais.} \da{adj.} jepang. \dd{(gentilé)} orang Jepang. \dd{(langue)} bahasa Jepang.
+
+\de{jaquier.} pohon nangka. \dd{fruit du \dt} nangka.
+
+\de{jaune.} kuning. \de{jaunâtre.} kekuning-kuningan.
+
+\de{jeudi.} hari Kamis.
+
+\de{jour.} hari. \de{journalier.} harian.
+
+\de{juif.} yahudi.
+
+\de{justice.} keadilan, hukum. \dd{\dt~sociale} keadilan sosial.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge K}
+
+\de{kaki.} \da{\rightarrow~plaqueminier.}
+
+\de{kapoquier.} pohon kapuk, randu. \de{kapok.} kapuk.
+
+\de{kilo.} kilo. \de{kilogramme.} kilogram. \de{kilomètre.} kilometer. \dd{\dt~par heure} kilometer per jam, km/j.
+
+\de{klaxon.} klakson.
+
+\de{kleenex.} \dd{(mouchoir de papier)} tisu.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge L}
+
+\de{lac.} danau, telaga, \da{jav.} sendang.
+
+\de{lahar.} \dd{(coulée de boue)} lahar. \dd{\dt~froid} lahar dingin.
+
+\de{laiton.} kuningan.
+
+\de{lame.} \dd{(en métal)} lempeng. \dd{\dt~de verre} pelat kaca.
+
+\de{lampe.} lampu. \dd{\dt~torche} senter.
+
+\de{large.} lebar.
+
+\de{lave.} lava. \dd{pierre de \dt} batu lava.
+
+\de{léger.} ringan.
+
+\de{léopard.} macan tutul, harimau dahan.
+
+\de{ligne.} garis.
+
+\de{lettre.} \dd{(correspondance)} surat. \dd{(caractère)} huruf.
+
+\de{lime.} \dd{(outil à main)} kikir. \dd{\dt~dégrossisseuse} kikir kasar. \dd{\dt~moyenne} kikir sedang. \dd{\dt~finisseuse} kikir halus. \dd{\dt~plate} kikir gepeng. \dd{\dt~carrée} kikir segi empat. \dd{\dt~tiers-point} kikir segitiga. \dd{\dt~demi-ronde} kikir setengah bulat. \dd{\dt~ronde} kikir bulat. \dd{\dt~de Cafre} \dd{(fruit)} \rightarrow~combava.
+
+\de{limiter.} membatasi. \de{limite.} batas, perbatasan.
+
+\de{liquide.} cair. \da{adj.} cairan.
+
+\de{liste.} daftar. \dd{\dt~bibliographique} daftar pustaka. \dd{\dt~à puces} daftar bullet. \dd{\dt~numérotée} daftar bernomor.
+
+\de{litchi.} leci. \dd{\dt~chevelu} rambutan.
+
+\de{littérature.} sastra.
+
+\de{localiser.} menentukan lokasi. \de{localisation.} lokasi. \dd{\dt~de séisme} penentuan pusat gempa.
+
+\de{logiciel.} piranti lunak, perangkat lunak.
+
+\de{loi.} undang-undang, ketentuan. \dd{hors-la-\dt} di luar hukum. \da{jav.} gali. \dd{faire sa \dt} mendikte.
+
+\de{longueur.} \dd{(géom.)} panjang.
+
+\de{lourd.} berat.
+
+\de{lumière.} cahaya.
+
+\de{lundi.} hari Senin.
+
+\de{lune.} bulan. \dd{nouvelle \dt} bulan baru. \dd{pleine \dt} bulan purnama.
+
+\de{lycée.} \dd{\rightarrow~école.}
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge M}
+
+\de{machette.} parang.
+
+\de{magma.} magma.
+
+\de{magnétisme.} kemagnetan. \de{magnétomètre.} magnetometer.
+
+\de{main.} tangan. \dd{\dt~dans la \dt} gandeng, bergandengan tangan.
+
+\de{maison.} rumah, \da{jav.} omah.
+
+\de{mal.} buruk, \da{jav.} molo. \de{avoir \dt} sakit, kesakitan. \de{maladie.} penyakit. \de{malade.} \dd{(adj.)} sakit. \dd{(n.)} orang sakit, pasien.
+
+\de{mâle.} jantan.
+
+\de{mangoustan.} manggis. \de{mangoustanier.} pohon manggis.
+
+\de{mangue.} mangga. \de{manguier.} pohon mangga.
+
+\de{mardi.} hari Selasa.
+
+\de{marée.} pasang surut. \dd{\dt~haute} air pasang. \dd{\dt~basse} air surut. \dd{forces de \dt} daya pasang surut. \dd{\dt~océanique} air pasang, pasang laut. \dd{\dt~terrestre} pasang surut bumi.
+
+\de{marque.} tanda, bekas. \dd{(fabriquant)} merek.
+
+\de{marron.} \dd{(couleur)} cocklat.
+
+\de{marteau.} palu, \da{jav.} pukul. \dd{\dt~piqueur} mesin bobok.
+
+\de{masculin.} \dd{(genre)} laki-laki.
+
+\de{masquer.} sembunyikan, menyembunyikan, menutupi. \de{masque.} topeng. \dd{(protection)} masker. \dd{\dt~à gaz} masker gas.
+
+\de{masse.} \dd{\dt~volumique} massa jenis.
+
+\de{mât.} tiang, \da{jav.} cagak.
+
+\de{matelas.} kasur.
+
+\de{matériel.} suku cadang, peralatan. \dd{\dt~informatique} piranti keras, perangkat keras.
+
+\de{membre.} bagian, angota. \dd{(citoyen)} warga.
+
+\de{mer.} laut.
+
+\de{mercredi.} hari Rabu.
+
+\de{mesurer.} mengukur. \de{mesure.} pengukuran.
+
+\de{métal.} logam.
+
+\de{météo.} meteo, cuaca. \dd{conditions \dt} kondisi cuaca. \dd{prévisions \dt} ramalan cuaca, prakiraan cuaca. \de{météorologie.} meteorologi.
+
+\de{météorite.} meteorit, benda langit.
+
+\de{méthode.} metode. \de{méthodologie.} metodologi.
+
+\de{mètre.} meter. \dd{\dt~à ruban} meteran.
+
+\de{mile.} mil.
+
+\de{milieu.} \dd{(position)} tengah. \dd{au \dt} di tengah. \dd{au beau \dt} di tengah-tengah.
+
+\de{militaire.} \da{n.} tentara, \dd{(soldat)} prajurit. \dd{service \dt} wamil, wajib militer.
+
+\de{mille.} seribu. \de{millier.} ribuan. \de{millénaire.} milenium.
+
+\de{million.} juta, jutaan.
+
+\de{milliard.} miliar, M.
+
+\de{minute.} menit.
+
+\de{mission.} misi kerja. \dd{(programme de travail)} rencana kerja. \dd{\dt~d'étude} studi.
+
+\de{modéliser.} memodelkan. \de{modèle.} model. \dd{(configuration, schéma)} pola. \de{modélisation.} pemodelan, modelisasi. \dd{\dt~numérique} simulasi komputer.
+
+\de{mois.} bulan. \de{mensuel.} bulanan.
+
+\de{molaire.} gigi geraham.
+
+\de{mollet.} \dd{anat.} betis. \dd{adj.} setengah matang.
+
+\de{monarchie.} monarki, kerajaan. \de{monarque.} penguasa monarki.
+
+\de{monnaie.} mata uang.
+
+\de{monter.} naik. \dd{(augmenter)} menaikkan. \de{montée.} kenaikkan.
+
+\de{moteur.} mesin.
+
+\de{motocycle.} motor, sepeda motor.
+
+\de{moyenner.} menghitung rata-rata. \de{moyenne.} rata-rata.
+
+\de{mouche.} lalat. \dd{(grain de beauté)} tahi lalat.
+
+\de{mousqueton.} carabiner.
+
+\de{moustique.} nyamuk. \de{moustiquaire.} kelambu.
+
+\de{mouvement.} gerakan. \dd{\dt~de terrain} gerakan tanah.
+
+\de{mulet.} keledai.
+
+\de{multimètre.} multimeter, multitester.
+
+\de{multiplier.} kali. \de{multiple.} \dd{math.} pelipatan. \de{multiplication.} kali. \dd{(math.)} perkalian. \de{multipliant.} \dd{bot.} palem kuning.
+
+\de{multiprise.} terminal.
+
+\de{murer.} membuat dinding. \de{mur.} dinding. \dd{jav.} tembok.
+
+\de{muscade.} \dd{noix de \dt} pala. \de{muscadier.} pohon pala.
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge N}
+
+\de{nation.} bangsa. \de{national.} \dd{hymne \dt} lagu kebangsaan. \de{nationalité.} warga negara, kewarganegaraan. \dd{\dt~étrangère} warga negara asing, WNA.
+
+\de{neige.} salju. \dd{avalanche de \dt} longsor salju.
+
+\de{nerf.} saraf.
+
+\de{neuf.} sembilan. \de{quatre-vingt-dix.} sembilan puluh.
+
+\de{nickel.} nikel.
+
+\de{niveau.} tingkat, tingkatan. \dd{\dt~d'alerte} status, level. \dd{\dt~à eau} waterpas. \dd{\dt~de la mer} permukaan laut. \de{nivellement.} pendataran.
+
+\de{noir.} hitam. \de{noirâtre.} kehitam-hitaman.
+
+\de{noix.} kacang. \dd{\dt~de cajou}  kacang mete. \dd{\dt~de muscade} kacang pala. \dd{\dt~de coco} kelapa.
+
+\de{nombre.} jumlah. \dd{(math.)} bilangan. \dd{\dt~premier} bilangan prima. \dd{\dt~entier naturel} bilangan asli.
+
+\de{nombril.} \da{jav.} udel.
+
+\de{nord.} utara, \da{jav.} lor. \de{nord-est.} timur laut. \de{nord-ouest.} barat laut.
+
+\de{noter.} catat, mencatat. \dd{(évaluer)} menilai, memberi nilai. \de{note.} catatan. \dd{(évaluation)} nilai. \dd{(mus.)} not.
+
+\de{notifier.} memberitahu. \de{notification.} pemberitahuan, notifikasi.
+
+\de{nouveau.} baru. \de{renouveler.} memperbarui, mengulangi.
+
+\de{noyau.} \dd{(phys.)} inti. \dd{(bot.)} biji. \dd{(informatique)} kernel.
+
+\de{nuage.} awan. \de{nuageux.} berawan, \dd{(de pluie)} mendung.
+
+\de{nuée ardente.} awan panas, \da{jav.} wedhus gembel.
+
+\de{numéro.} nomor. \de{numéroté.} bernomor.
+
+\de{nuque.} tengkuk.
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge O}
+
+\de{objectif.} tujuan.
+
+\de{observer.} mengamati. \de{observateur.} pengamat. \de{observation.} pengamatan. \dd{poste d'\dt} pos pengamatan. \dd{tour d'\dt} menara pengamatan.
+
+\de{occasion.} \dd{(opportunité)} kesempatan. \dd{(2e main)} bekas.
+
+\de{océan.} samudra, lautan.
+
+\de{officiel.} resmi.
+
+\de{oie.} bangsa.
+
+\de{oiseau.} burung, \da{jav.} manuk.
+
+\de{ombre.} bayangan. \dd{faire de l'\dt} menutupi.
+
+\de{onde.} gelombang.
+
+\de{ongle.} kuku.
+
+\de{orage.} guntur.
+
+\de{orange.} \dd{(fruit)} jeruk. \dd{(couleur)} oranye, jingga.
+
+\de{ordinateur.} komputer.
+
+\de{oublier.} lupa, melupakan. \de{oublié.} kelupaan.
+
+\de{ouest.} barat, \da{jav.} kulon.
+
+\de{outil.} alat, peralatan.
+
+\de{ouvrir.} membuka. \de{ouvert.} buka, terbuka. \de{ouverture.} pembukaan. \dd{horaire d'\dt} jam buka.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge P}
+
+
+\de{pain.} roti, roti tawar. \dd{arbre à \dt} pohon sukun. \dd{fruit à \dt} sukun.
+
+\de{pair.} \dd{(math.)} genap.
+
+\de{papaye.} pepaya. \de{papayer.} pohon pepaya.
+
+\de{papier.} kertas. \dd{une feuille de \dt} selembar kertas. \dd{(document)} surat-surat.
+
+\de{panne.} gangguan, mogok, rusak. \dd{tomber en \dt} mogok.
+
+\de{panneau.} papan. \dd{\dt~solaire} panel surya, solar panel.
+
+\de{paradis.} surga.
+
+\de{paratonnerre.} penangkal petir.
+
+\de{pare-chocs.} bumper.
+
+\de{parenthèse.} \dd{(typ.)} tanda kurung, kurung lengkung.
+
+\de{pas.} \dd{(humain)} langkah. \dd{\dt~de vis} drat, alur-alur sekrup.
+
+\de{pastèque.} semangka.
+
+\de{pâte.} \dd{(culin.)} adonan. \dd{préparer la \dt} menyapkan adonan.
+
+\de{patienter.} tunggu, menunggu. \de{patient.} \da{adj.} sabar. \da{n.} \dd{(méd.)} pasien. \de{patience.} kesabaran. \dd{prendre son mal en \dt} menyabarkan diri.
+
+\de{patrie.} tanah air.
+
+\de{pêcher.} mancing, memancing.
+
+\de{pécher.} berbuat dosa. \dd{acte de \dt} perbuatan dosa. \de{péché.} dosa.
+
+\de{pellicule.} kulit. \dd{\dt~photo} rol film. \dd{(cheveux)} ketombe.
+
+\de{pencher.} miring. \de{pente.} tanjakan. \de{pentu.} tanjak, menanjak.
+
+\de{percer.} menembus. \de{percé}. tembus, bolong. \de{perceuse.} bor.
+
+\de{périphérique.} \da{adj.} sekeliling. \dd{boulevard \dt} ring road.
+
+\de{perpendiculaire.} serenjang, tegak lurus.
+
+\de{personne.} orang, seorang. \dd{\dt~âgée} orang lansia (lanjut usia).
+
+\de{peser.} timbang, menimbang. \de{pesée.} timbangan. \de{pesant.} berat.
+
+\de{pétrole.} minyak bumi. \dd{puits de \dt} sumur minyak.
+
+\de{peuple.} \rightarrow populer.
+
+\de{pièce.} \dd{(maison)} ruang. \dd{(mécanique)} bagian. \dd{\dt~détachée} bagian komponen. \dd{(monnaie)} koin.
+
+\de{pied.} kaki. \dd{marche à \dt} jalan kaki. \dd{\dt-de-biche.} linggis.
+
+\de{pierre.} batu.
+
+\de{pilier.} tugu. \dd{(petit)} \da{jav.} pathok.
+
+\de{pince.} catut.
+
+\de{pinceau.} kwas, kuas.
+
+\de{piquer.} \dd{(avec une aiguille)} suntik, menyuntik. \dd{(insecte)} gigit, menggigit.
+
+\de{pirater.} membajak. \de{pirate.} bajak, pembajak. \dd{\dt~des mers} bajak laut. \de{piratage.} pembajakan.
+
+\de{pistolet.} pistol.
+
+\de{pitaya.} buah naga.
+
+\de{plage.} pantai.
+
+\de{plan.} \dd{(carte)} denah. \dd{(prévision)} rencana.
+
+\de{plat.} \da{adj.} rata, datar. \dd{angle \dt} sudut lurus.
+
+\de{planche.} papan. \dd{(étagère)} rak.
+
+\de{planter.} \dd{(en terre)} tanam, menanam. \de{plante.} tanaman.
+
+\de{plaque.} lempeng.
+
+\de{plaqueminier.} pohon kesemek. \de{kaki} \dd{(fruit)} kesemek. 
+
+\de{plastique.} plastik.
+
+\de{plier.} lipat, melipat. \dd(figuré) \dd{se \dt} mematuhi, tunduk. \de{plié.} terlipat. \de{pli.} lipatan. \de{pliage.} pelipatan.
+
+\de{plomb.} timah, timah hitam, timbal. \de{plomberie.} ledeng. \de{plombier.} tukang ledeng.
+
+\de{plonger.} menyelam. \de{plongeon.} terjun.
+
+\de{pluie.} hujan. \dd{\dt~fine} hujan gerimis. \dd{\dt~drue} hujan deras, hujan lebat. \dd{\dt~verglaçante} hujan beku. \de{pluviométrie.} curah hujan.
+
+\de{plume.} bulu burung.
+
+\de{poil.} bulu. \de{poilu.} \dd{adj.} berbulu.
+
+\de{point.} titik. \dd{\dt~de mesure} titik pengukuran. \dd{\dt~de référence} titik acuan. \dd{(typ.)} \dd{\dt-virgule} titik koma. \dd{deux \dt} dua titik. \dd{\dt~d'interrogation} tanda tanya. \dd{\dt~d'exclamation} tanda seru, titik seru, tanda perintah.
+
+\de{poison.} \da{\rightarrow~empoisonner.}
+
+\de{poitrine.} dada.
+
+\de{poncer.} mengamplas. \de{ponceuse.} mesin amplas. \de{ponce.} \dd{(géol.)} batu apung.
+
+\de{populer.} berpenduduk. \de{population.} penduduk. \de{populaire.} terkenal. \de{peuple.} rakyat, masyarakat. \de{petit \dt} rakyat kecil. \de{se mélanger avec le \dt} merakyat.
+
+
+\de{porter.} membawa. \de{porteur.} kuli, porter. \de{porte-clefs.} gantungan kunci.
+
+\de{position.} \dd{(emplacement)} posisi, letak.
+
+\de{posséder.} mempunyai, memiliki. \de{possédé.} \dd{(par un esprit malin)} kesurupan. \de{possession.} milik, kemilikan, kepunyaan.
+
+\de{post-.} pasca-. \dd{\dt-éruptif} pascaletusan. \dd{\dt-doctoral} pascasarjana.
+
+\de{poudre.} bubuk. \dd{\dt~noire} bubuk mesiu, bubuk hitam.
+
+\de{poulet.} ayam. \dd{\dt~fermier} ayam kampung. \de{poule.} ayam betina.
+
+\de{pousser.} dorong, mendorong. \de{pousse.} \dd{(bot.)} bibit.
+
+\de{poussière.} debu.
+
+\de{préciser.} menjelaskan. \de{précision.} ketelitian.
+
+\de{prédire.} memprediksi, memprediksikan. \dd{\dt~l'avenir} meramal. \de{prediction.} ramalan, prakiraan.
+
+\de{préface.} kata pengantar.
+
+\de{président.} presiden. \de{présidentiel.} \dd{élection \dt} pemilihan presiden.
+
+\de{pression.} tekanan. \dd{\dt~d'air} tekanan udara. \dd{\dt~atmosphérique} tekanan atmosfir.
+
+\de{prêter.} meminjamkan. \de{prêt.} pinjaman. \dd{(bancaire)} kredit.
+
+\de{prévenir.} memberitahu, mengantisipasi. \de{prévention.} antisipasi.
+
+\de{prévoir.} memprakirakan. \de{prévision.} prakiraan, perkiraan, ramalan.
+
+\de{prier.} berdoa, mendoakan, \da{jav.} sembayang. \dd{je vous en prie !} silakan! \de{prière.} doa. \dd{\dt~de bien vouloir} mohon untuk, dimohon.
+
+\de{prince.} pangeran. \de{princesse.} putri raja, tuan putri.
+
+\de{prise.} \dd{(élec.) \dt~secteur (socle)} soket listrik. \dd{\dt~multiple} \da{\rightarrow~multiprise.}
+
+\de{privé.} \da{adj.} pribadi. \dd{(entreprise)} swasta.
+
+\de{probabilité.} probabilitas, kemungkinan.
+
+\de{problème.} masalah, problem.
+
+\de{professeur.} guru. \dd{(université)} dosen, profesor, guru besar. \dd{(enseignant primaire/secondaire)} guru.
+
+\de{profond.} dalam. \de{profondeur.} kedalaman.
+
+\de{programmer.} \dd{(plannifier)} merencanakan. \de{programme.} program. \de{programmation.} \dd{(informatique)} pemrograman. \dd{langage de \dt} bahasa pemrograman.
+
+\de{progresser.} maju. \de{progrès.} kemajuan.
+
+\de{promener.} \de{se \dt} jalan-jalan, berjalan-jalan.
+
+\de{propos.} pendapat. \dd{à \dt} tentang, terkait, mengenai.
+
+\de{protéger.} melindungi. \de{protection.} perlindungan.
+
+\de{province.} daerah. \dd{(admin.)} propinsi.
+
+\de{public.} \da{n.} publik. \dd{(spectacle)} penonton. \dd{(télévision)} pemirsa. \da{adj.} umum, publik. \de{école \dt} sekola negeri.
+
+\de{puce.} \dd{(insecte)} kutu. \dd{(électronique)} sirkuit terpadu. \dd{(typ.)} bullet. \dd{marché aux \dt} pasar loak.
+
+\de{puits.} sumur.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge Q}
+
+\de{qualité.} kwalitas.
+
+\de{quand.} kapan. \dd{n'importe \dt} kapan saja.
+
+\de{quatre.} empat. \de{quart.} perempat. \de{quarante.} empat puluh. \de{quarantaine.} \dd{(num.)} empat puluhan, \dd{(méd.)} karantina.
+
+\de{questionner.} tanya, bertanya, menanyakan. \de{question.} tanya, pertanyaan.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge R}
+
+\de{raccourcir.} memendekkan. \de{raccourci.} jalan pintas, jalan tikus.
+
+\de{rail.} rel.
+
+\de{ralentir.} kurangi kecepatan. \de{ralentisseur.} \dd{(dos d'âne)} polisi tidur.
+
+\de{ramboutan.} rambutan.
+
+\de{randonnée.} \dd{(en montagne)} pendakian. \dd{faire de la \dt} mendaki. \de{randonneur.} pendaki.
+
+\de{râper.} memarut. \de{coco \dt} kelapa parut. \de{râpe.} \dd{(ustensile de cuisine)} parut. \dd{\dt~à bois} kikir kayu.
+
+\de{rappeler.} mengingatkan. \de{rappel.} ingat, peringatan.
+
+\de{rapporter.} melaporkan. \de{rapport.} laporan. \dd{\dt~de travail} laporan kerja. \dd{\dt~d'activité} laporan kegiatan.
+
+\de{rare.} langka, jarang.
+
+\de{ravine.} jurang.
+
+\de{rayonner.} memancar. \de{rayonnant.} terpancar. \de{rayonnement.} pancaran. \de{rayon.} \dd{(géom.)} jari-jari. \dd{(d'une roue)} jeruji. \dd{(lumière)} sinar. \dd{\dt~de soleil} sinar matahari.
+
+\de{rayer.} mencoret, menggores. \de{rayure.} coretan, goresan.
+
+\de{réaliser.} lakukan, melakukan, buat, membuat. \de{réalisateur.} \da{\rightarrow~auteur.} \de{réalisation.} pelaksanaan.
+
+\de{recevoir.} menerima. \de{récepteur.} alat penerima. \de{réception.} resepsi. \de{reçu.} nota, struk.
+
+\de{réchauffer.} \dd{\rightarrow~chaud.}
+
+\de{recherche.} \da{\rightarrow~chercher.}
+
+\de{rectangle.} persegi panjang.
+
+\de{réel.} nyata. \de{réalité.} kenyataan, realitas.
+
+\de{refroidir.} \dd{\rightarrow~froid.}
+
+\de{régler.} \dd{(payer)} bayar, membayar. \dd{(résoudre)} menyelesaikan. \de{réglage.} pengaturan. \de{règlement.} pengaturan. \dd{(paiement)} pembayaran, \dd{demander le \dt} menagih. \de{règle.} \dd{(loi)} peraturan. \dd{(outil)} penggaris.
+
+\de{réguler.} mengatur. \de{régulateur.} \dd{(de charge électrique)} regulator.
+
+\de{rein.} ginjal.
+
+\de{reine.} ratu. \dd{\dt~consort} permaisuri. \dd{\dt~mère} ibu suri.
+
+\de{rejoindre.} menyusul.
+
+\de{religion.} agama.
+
+\de{remplacer.} mengganti. remplaçant. pengganti. remplacement. penggantian.
+
+\de{rencontrer.} ketemu, bertemu. \de{rencontre.} pertemuan.
+
+\de{renouveler.} \da{\rightarrow~nouveau.}
+
+\de{réparer.} memperbaiki. \de{réparation.} perbaikan.
+
+\de{répertoire.} \dd{(liste)} daftar. \dd{(informatique)} direktori.
+
+\de{répondre.} balas, membalas, jawab, menjawab. \de{réponse.} balasan, jawaban.
+
+\de{reportage.} liputan.
+
+\de{représenter.} mewakili. \de{représentant.} wakil, perwakilan, wali.
+
+\de{requin.} ikan Hiu, Hiu.
+
+\de{réseau.} jaringan. \dd{\dt~de répétition} jaringan pengukuran ulang. \dd{\dt~fermé (boucle)} jaringan tertutup. \dd{\dt~téléphonique} jaringan telpon. \dd{\dt~sans fil} jaringan nirkabel.
+
+\de{réserver.} pesan, memesankan. \de{réservation} pemesanan, pesanan.
+
+\de{ressentir.} merasa, merasakan. \de{ressenti.} \da{n.} perasaan. \da{adj.} terasa, dirasakan. \dd{séisme \dt} gempa dirasakan.
+
+\de{ressort.} pegas, per.
+
+\de{ressource.} sumber daya.
+
+\de{résultat.} hasil.
+
+\de{résumé.} intisari, sari, abstrak.
+
+\de{retarder.} menunda. \de{retardé.} ditunda, tertunda, terlambat. \de{retard.} keterlambatan. \dd{être en \dt} telat, terlambat.
+
+\de{retirer.} lepas, melepas, tarik, menarik. \de{retrait.} \dd{(d'argent)} penarikan, pengambilan.
+
+\de{réunir.} berkumpul. \de{réunion.} rapat, kumpulan.
+
+\de{réussir.} berhasil. \de{réussite.} keberhasilan
+
+\de{rigide.} kaku.
+
+\de{risque.} \dd{(danger)} risiko.
+
+\de{rivet.} paku keling.
+
+\de{rivière.} sungai, \da{jav.} kali.
+
+\de{riz.} \dd{(plante)} padi. \dd{(épi)} gabah. \dd{(grains)} beras. \dd{(cuisiné)} nasi. \de{rizière.} sawah.
+
+\de{roche.} batu, batuan. \dd{\dt~magmatique} batuan beku.
+
+\de{roi.} raja. \de{royal.} \dd{cobra \dt} kobra raja. \de{royauté.} kerajaan.
+
+\de{rond.} bundar, bulat.
+
+\de{rose.} \da{(fleur)} mawar. \da{(couleur)} merah muda, pink, \da{jav.} jambon. \de{rosée.} \da{n.} embun.
+
+\de{rouiller.} berkarat. \de{rouille.} karat.
+
+\de{rouge.} merah. \de{rougeâtre.} kemerah-merahan.
+
+\de{ruban.} pita. \dd{\dt~adhésif} isolasi, lakban.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge S}
+
+
+\de{sac.} tas. \dd{\dt~plastique} tas plastik, \da{jav.} kresek. \dd{\dt~à dos} tas punggung, ransel.
+
+\de{sable.} pasir.
+
+\de{sapotille.} sawo. \de{sapotillier.} pohon sawo.
+
+\de{samedi.} hari Sabtu.
+
+\de{santé.} kesehatan. \dd{centre de \dt} pusat kesehatan.
+
+\de{satellite.} satelit. \dd{imagerie \dt} pencitraan satelit.
+
+\de{satisfaire.} memuaskan. \de{satisfaisant.} memuaskan. \de{satisfait.} puas.
+
+\de{saturation.} keterbatasan.
+
+\de{savourer.} mensyukuri. \de{saveur.} cita rasa.
+
+\de{scie.} graji, gergaji. \dd{\dt~circulaire} gerinda.
+
+\de{science.} ilmu. \de{scientifique.} \da{adj.} ilmiah. \dd{(profession)} ilmuwan.
+
+\de{scorie.} \dd{(géol.)} skoria. \dd{(métallurigie)} terak.
+
+\de{seau.} ember.
+
+\de{sêcher.} keringkan, mengeringkan. \dd{(un vêtement)} jemur, menjemur. \de{sêchoir.} \dd{\dt~à cheveux} pengering rambut, \dd{\dt~à linge} jemuran. \de{sec.} kering.
+
+\de{seconde.} \da{n.} detik.
+
+\de{secourir.} selamatkan, menyelamatkan. \de{secours.} pertolongan. \dd{premiers \dt} pertolongan pertama. \dd{au \dt !} tolong! \dd{issue de \dt} pintu darurat.
+
+\de{secouer.} getar, bergetar. \de{secousse.} getaran.
+
+\de{sécurité.} keamanan.
+
+\de{sein.} \dd{(anat.)} payudara.
+
+\de{séisme.} gempa. \dd{tremblement de terre} gempa bumi, getaran bumi. \de{sismologie.} seismologi. \de{sismomètre.} seismometer. \de{sismicité.} kegempaan, seismisitas.
+
+\de{semaine.} minggu, pekan. \de{hebdomadaire.} mingguan.
+
+\de{sentir.} mencium, merasa, merasakan. \dd{\dt~mauvais} bau, berbau, \da{jav.} mambu. \dd{\dt~bon} wangi.
+
+\de{sentier.} jalan kecil. \da{\rightarrow~chemin.}
+
+\de{sept.} tujuh. \de{soixante-dix.} tujuh puluh.
+
+\de{serpenter.} berliku-liku. \de{serpent.} ular.
+
+\de{service.} pelayanan, layanan.
+
+\de{seringue.} alat suntik.
+
+\de{siècle.} abad. \de{séculaire.} berabad-abad.
+
+\de{sigle.} singkatan.
+
+\de{signaler.} \dd{(rapporter)} melaporkan. \de{signal.} sinyal, tanda-tanda. \de{signe.} tanda. \dd{\dt~de ponctuation} tanda baca.
+
+\de{silicone.} silikon. \dd{graisse \dt} Sealant.
+
+\de{six.} enam. \de{soixante.} enam puluh. \de{soixantaine.} enam puluhan.
+
+\de{soin.} \dd{(méd.)} perawatan. \dd{avec \dt} dengan teliti.
+
+\de{soldat.} prajurit.
+
+\de{soleil.} matahari. \dd{lever de \dt} matahari terbit. \dd{coucher de \dt} matahari terbenam. \de{ensoleillé.} cerah.
+
+\de{solide.} \da{adj.} kuat, kencang. \dd{(état phys.)} padat.
+
+\de{sombre.} gelap. \dd{(couleur)} tua.
+
+\de{sommet.} puncak.
+
+\de{son.} \dd{(bruit)} suara.
+
+\de{sophistiqué.} canggih.
+
+\de{souder.} mengelas. \de{soudure.} las. \dd{\dt~à l'étain} tenol.
+
+\de{souffrir.} menderita.
+
+\de{soufre.} \dd{(solide)} belerang. \dd{dioxyde de \dt} sulfur dioksida.
+
+\de{soumettre.} \dd{(un dossier, un article)} menyerakan. \de{soumis.} diserakan. \dd{(dominé)} tunduk.
+
+\de{souple.} supel.
+
+\de{source.} sumber. \dd{\dt~chaude} sumber air panas, mata air panas.
+
+\de{souris.} tikus. \dd{(d'ordinateur)} tetikus.
+
+\de{soustraction.} \dd{(math.)} pengurangan.
+
+\de{souvenir.} \dd{v. se \dt} ingat, mengingat. \da{n.} kenangan, ingatan. \dd{(objet)} cindra mata, suvenir.
+
+\de{spécialiste.} \da{\rightarrow~expert.}
+
+\de{sphère.} \dd{(géom.)} bola. \dd{\dt~d'influence} lingkaran pengaruh.
+
+\de{sport.} olahraga.
+
+\de{stationner.} \dd{(véhicule)} parkir. \de{station.} stasiun.
+
+\de{subsidence.} \dd{(géol.)} subsiden, penurunan muka tanah.
+
+\de{sud.} selatan, \da{jav.} kidul. \de{sud-est.} tenggara. \de{sud-ouest.} barat daya.
+
+\de{suie.} jelaga.
+
+\de{superficiel.} \dd{(peu profond)} dangkal.
+
+\de{surelle.} \da{\rightarrow~girembelle.}
+
+\de{surface.} permukaan. \dd{(géom.)} luas.
+
+\de{surveiller.} mengamati, menjaga. \de{surveillance.} pengamatan. \dd{poste de \dt} pos pengamatan. \dd{télé \dt} pengamatan jarak jauh.
+
+\de{suspecter.} mencurigai.
+
+\de{système.} sistem.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge T}
+
+
+\de{tableau.} \dd{(pour écrire)} papan tulis. \dd{(peinture)} lukisan.
+
+\de{talon.} tumit.
+
+\de{tamarin.} asam, asam jawa. \de{tamarinier.} pohon asam.
+
+\de{taxi.} taksi.
+
+\de{télécharger.} mengunduh. \de{téléchargement.} pengunduhan, donlot.
+
+\de{télédétection.} teledeteksi, penginderaan jauh.
+
+\de{téléphérique.} kereta gantung.
+
+\de{téléphoner}. telpon, menelpon. \de{téléphone.} telepon, telpon. \dd{\dt~portable} telpon seluler, HP, ponsel.
+
+\de{témoigner.} menyaksikan. \de{témoignage.} kesaksian. \de{témoin.} saksi.
+
+\de{température.} suhu.
+
+\de{tempête.} badai.
+
+\de{temps.} \dd{(durée, période)} waktu. \dd{(époque)} zaman. \dd{(météo)} cuaca.
+
+\de{tendance.} kecenderungan.
+
+\de{tension.} tegangan. \dd{\dt~électrique} tegangan listrik. \dd{\dt~artérielle} tekanan darah.
+
+\de{terrain.} lapangan. \dd{glissement de \dt} tanah longsor.
+
+\de{terre.} tanah, darat. \dd{à \dt} darat. \dd{armée de \dt} angkatan darat. \dd{\dt~australes} daratan Selatan. \de{Terre.} \dd{(planète)} bumi.
+
+\de{test.} tes, percobaan.
+
+\de{testicule.} testis, buah zakar.
+
+\de{tête.} kepala.
+
+\de{thermomètre.} pengukur suhu, termometer. \de{thermorétractable.} \dd{gaine \dt} kabel selongsong bakar.
+
+\de{tiède.} hangat. \dd{eau \dt} air hangat, suam-suam kuku.
+
+\de{tigre.} harimau, \da{jav.} macan.
+
+\de{tirer.} tarik.
+
+\de{tiret.} \dd{(typ.)} tanda penghubung.
+
+\de{tomber.} \dd{\rightarrow~chuter}.
+
+\de{tonnerre.} guntur.
+
+\de{touche.} \dd{(de clavier)} tombol.
+
+\de{tournevis.} obeng. \dd{\dt~plat} obeng minus. \dd{\dt~cruciforme} obeng plus.
+
+\de{toxique.} toksik, racun. \da{\rightarrow~empoisonner.}
+
+\de{trainer.} tarik, menarik. \de{train.} kereta, kereta api. \dd{\dt~à grande vitesse} kereta cepat. \de{traineau.} kereta gantung.
+
+\de{transfert.} transfer.
+
+\de{transporter.} bawa, membawa. \dd{(par véhicule)} muat, memuat. \de{transport.} angkutan, transportasi. \dd{moyen de \dt} alat transportasi. \dd{capacité de \dt} kapasitas muatan.
+
+\de{trembler.} gemetar. \de{tremblement.} getaran. \dd{\dt~de terre} \dd{\rightarrow~séisme.}
+
+\de{triangle.} segitiga. \dd{\dt~isocèle} segitiga sama kaki. \dd{\dt~équilatéral} segitiga sama sisi. \dd{\dt~rectangle} segitiga siku-siku. \dd{\dt~quelconque} segitiga taksama kaki.
+
+\de{trois.} tiga. \de{tiers.} \dd{(math.)} pertiga. \dd{(personne)} orang ketiga. \de{trente.} tiga puluh. \de{trentaine.} tiga puluhan.
+
+\de{tronc.} batang. \dd{\dt~commun} mata kulia umum.
+
+\de{trouble.} \dd{eau \dt} air keruh. \dd{vue \dt} kabur.
+
+\de{trouer.} melubangi, membuat lubang. \de{troué.} berlubang, \da{jav.} bolong. \de{trou.} lubang.
+
+\de{trouver.} temukan, menemukan. \de{trouvaille.} temuan.
+
+\de{truelle.} cetok.
+
+\de{tuer.} bunuh, membunuh.
+
+\de{tube.} pipa, tabung.
+
+\de{tuyau.} \dd{\dt~rigide} pipa. \dd{\dt~souple} selang. \dd{\dt~d'arrosage} selang air.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge U}
+
+
+\de{unir.} menyatu. \dd{s'\dt} bersatu. \de{unifier.} menyatukan. \de{un.} \dd{(nombre)} satu, se-. \de{unique.} unik. \de{unité.} satuan.
+
+\de{urgent.} segera. \de{urgence.} darurat. \dd{\dt~médicales} unit gawat darurat, UGD. \dd{plan d'\dt} persiapan bencana.
+
+\de{USB.} USB. \dd{clé \dt} flash disk.
+
+\de{usine.} pabrik.
+
+\de{utiliser.} pakai, memakai, menggunakan. \de{utilisateur.} pengguna, pemakai. \de{utilisation.} penggunaan, pemakaian. \de{utilité.} kegunaan. \de{utile.} \da{adj.} berguna.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge V}
+
+
+\de{vache.} sapi.
+
+\de{valeur.} nilai, harga.
+
+\de{vallée.} lembah.
+
+\de{valve.} katup. \dd{\dt~cardiaque} katup jantung.
+
+\de{vaporiser.} \dd{se \dt} menguap. \de{vapeur.} uap.
+
+\de{véhicule.} keandaraan.
+
+\de{vélo.} sepeda. \dd{\dt{} électrique} sepeda listrik. \dd{\dt{} pliant} sepeda lipat. \dd{faire du \dt} bersepeda, naik sepeda, \da{jav.} ngonthel.
+
+\de{vendredi.} hari Jumat.
+
+\de{vent.} angin. \de{venteux.} berangin.
+
+\de{ventre.} perut.
+
+\de{ver.} cacing. \dd{\dt~de terre} cacing tanah. \dd{\dt~solitaire} cacing pita.
+
+\de{vert.} hijau. \de{verdâtre.} kehijau-hijauan.
+
+\de{vêtement.} baju, pakaian, \da{jav.} kelambi. \dd{sous-\dt} baju dalam, pakaian dalam.
+
+\de{vétuste.} bobrok. \de{vétusté.} kebobrokan.
+
+\de{viande.} daging.
+
+\de{vibrer.} bergetar. \de{vibration.} getaran, goyangan.
+
+\de{victime.} korban.
+
+\de{vider.} mengosongkan. \de{vide.} kosong, kekosongan. \dd{complètement \dt} sekosong-kosongnya. \de{vidage.} pengosongan.
+
+\de{vigilance.} waspada, kewaspadaan, hati-hati. \de{vigilant.} waspada. \dd{être \dt} berhati-hati. \de{vigil.} satpam. \dd{poste \dt} pos penjagaan.
+
+\de{vin.} anggur. \de{vinaigre}. cuka. \de{vigne.} pohon anggur, tanaman anggur.
+
+\de{violet.} ungu. \de{violacé.} keungu-unguan.
+
+\de{vis.} sekrup, paku sekrup. \dd{(tige de boulon)} baut.
+
+\de{viscosité.} kekentalan. \de{visqueux.} kental.
+
+\de{visiter.} kunjung, mengunjungi, berkunjung. \dd{(un malade)} bezoek. \de{visite.} kunjungan. \de{visiteur.} pengunjung, tamu.
+
+\de{vite.} cepat. \de{vitesse.} laju, kecepatan. \dd{boîte de \dt} kotak gigi.
+
+\de{voie.} jalur, jalan, \dd{(direction)} arah. \dd{\dt~rapide} jalur cepat.
+
+\de{voiture.} \dd{(automobile)} mobil. \dd{(wagon)} gerbong.
+
+\de{volcan.} gunung api, gunung berapi. \dd{strato-\dt} gunung berapi kerucut. \dd{\dt~bouclier} gunung berapi perisai. \de{volcanologie.} vulkanologi, kegunungapian. \de{volcanologue.} ahli gunung api.
+
+\de{voler.} terbang. \de{vol.} \dd{(avion)} penerbangan. \de{voleur.} pencuri, \da{jav.} maling.
+
+\de{volontairement.} sengaja.
+
+\de{volume.} \dd{(géom.)} volume, isi. \dd{(son)} suara.
+
+\de{vulcanisation.}  vulkanisasi. \dd{\dt~du caoutchouc} vulkanisasi karet.
+
+\de{vulnérable.} rentan. \de{vulnérabilité.} kerentanan.
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge W}
+
+\de{wagon.} \da{\rightarrow~voiture.}
+
+\de{week-end.} akhir pekan.
+
+
+% ------------------------------------------------------------------------------------------------------------
+%\section*{\Huge X Y}
+
+
+% ------------------------------------------------------------------------------------------------------------
+\section*{\Huge Z}
+
+
+\de{zéro.} nol, kosong.
+
+\de{zone.} daerah, wilayah, zona.
+
+\de{zoo.} kebun binatang.
+
+
+\end{document}  
