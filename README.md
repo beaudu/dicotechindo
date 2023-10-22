@@ -4,7 +4,7 @@ Au départ simple lexique de termes techniques en rapport avec la volcanologie, 
 ## Compilation
 Le fichier source `dicotechindo.tex` doit être compilé avec le moteur [**LuaLaTeX**](https://www.luatex.org). La police de caractères **Liberation Serif** doit être installée au préalable sur la machine qui effectue la compilation.
 
-Le document final au format PDF est disponible également [ici](https://github.com/beaudu/dicotechindo/releases/download/latest/dicotechindo.pdf).
+Le document final au format PDF est disponible également [ici](https://github.com/beaudu/dicotechindo/releases/download/v1.0/dicotechindo.pdf).
 
 ## Auteur
 - **François Beauducel** [beaudu](https://github.com/beaudu)
