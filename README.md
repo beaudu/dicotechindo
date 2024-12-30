@@ -11,5 +11,5 @@ Le document final au format PDF est disponible également [ici](https://github.c
 
 ## Auteur
 - **François Beauducel** [beaudu](https://github.com/beaudu)
-- avec le concours de **Wimpy S. Tjetjep** (1993-1994) et **Alix Aimée Triyanti** (1994-2023)
+- avec le concours de **Wimpy S. Tjetjep** (1993-1994) et **Alix Aimée Triyanti** (1994-2024)
 
