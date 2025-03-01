@@ -7,7 +7,7 @@ Le fichier source `dicotechindo.tex` doit être compilé avec le moteur [**LuaLa
 lualatex dicotechindo.tex
 ```
 
-Le document final au format PDF est disponible également [ici](https://github.com/beaudu/dicotechindo/releases/download/v1.0/dicotechindo.pdf).
+Le document final au format PDF est disponible également [ici](https://github.com/beaudu/dicotechindo/releases/download/v1.1/dicotechindo.pdf).
 
 ## Auteur
 - **François Beauducel** [beaudu](https://github.com/beaudu)
